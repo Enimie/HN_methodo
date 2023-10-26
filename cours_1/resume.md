@@ -57,4 +57,60 @@ Exemple: mettre le prénom de l'auteur entre parenthèses dans la bibliographiqu
 
 Explication: on donne des indications pour une partie du nom de l'auteur (`name-part`); il s'agit du prénom (`name="given"`); on encadre le prénom par un préfixe et un suffixe, respectivement une parenthèse ouvrante et une parenthèse fermante.
 
+## Rédiger avec LibreOffice
+
+
+
+
+### Utiliser les niveaux de titre et le mode plan
+
+- Dans l'option de formatage, utiliser les différents niveaux de titre (`heading`) pour attributer des niveaux à vos titre (section, sous-section, etc)
+- Pour numéroter un niveau de titre, par exemple `heading 1`: choisir Outils - numérotation des chapitres 
+- Utiliser le mode plan ("Navigateur"): `Vue - navigateur`, ou `Fn 5`. Utiliser les flèches droite-gauche pour modifier le niveau d'un titre (par exemple passer de `heading 3` à `heading 2`, et es flèches haut-bas pour déplacer la section et ses dépendances (texte, sous-partie) ailleurs dans le document.
+- Insérer une table des matières:  `Insertion - table des matières`. Penser à modifier le titre pour qu'il apparaisse en français.
+- Pour mettre à jour la table des matières (ou toute autre table): sur la table, faire un clic droit - sélectionner `mettre à jour l'index`
+- Si l'on insère une image (`Insertion - image`), un clic droit permet d'insérer une légende, dont le contenu apparaîtra ensuite dans la table des figures. Pour imprimer celle-ci: même méthode que pour la table des matières, mais sélectionner `table of figures`
+
+
+### Faire une feuille de style
+
+-  Faire apparaitre le panel des styles: `Affichage - Styles` (ou: `Fn 11`)
+- **nb** Il faut différencier les styles pour les caractères et les styles pour les paragraphes.
+- Exemple de style préexistant: les styles de titre (déjà vus), le style pour les citations, le style de corps de texte (`body`), celui des notes de bas de page (`footnote`) 
+- Pour modifier un style déjà existant: clic droit sur le style - `Modifier`. Ou: flèche à droite, `Modifier le style`
+- Pour créer un nouveau style: clic droit - ` nouveau` . Ou: flèche à droite, `Nouveau style à partir de la sélection`
+
+<!--3. Footer
+- FN11 pour faire apparaître les styles (ou bien ds style-gérer les styles): syle pour paragrpahe - caractère- contours des images - pages - liste. Exemple pour defautpagesytle:
+- ajouter un footer, puis insertion: numéro de page; RQ: on peut aussi ajouter header
+
+Page de titre
+- Insertion -autre saut - saut manuel - selectionner un style - numéro de page: pour que numéotation commence à cette page
+- la première page: firststyle -> pas de footer
+-->
+
+- **Enregistrer sa feuille de style pour la réutiliser**: `fichier -modèle: enregistrer comme modèle - choisir une catégorie (my templates) - set as defaut template`. Si vous modifiez votre style par la suite en cours de rédaction, refaite l'opération.
+- Vous pouvez aussi aller dans `Styles - charger des styles depuis un modèle`
+
+
+**Pour aller plus loin**
+
+- Un tutoriel très clair: [tutorielrennes2](https://tutos.bu.univ-rennes2.fr/c.php?g=675808&p=4904731)
+- le guide officiel: [guide](https://wiki.documentfoundation.org/images/7/70/GS5103FR-Styles_et_mod%C3%A8les.pdf)
+
+### Travailler avec un document maître
+
+- Utile  pour gérer des documents volumineux (par exemple des mémoires)
+- Le document maître appelle plusieurs sous-documents (par exemple les différentes sections), qu'il prend en compte pour la numérotation des pages, l'impression de la table des matières, etc
+- Cette insertion se fait au moyen de liens
+- Les styles créés dans les sous-documents sont automatiquement importés dans le document maître; mais s'il y a des styles du même nom dans le document maître et le sous-document, la priorité est  donnée au style du document maître, ce qui permet d'avoir des styles homogènes dans l'ensemble du document final.
+- Les modifications du document maître ne se répercutent pas dans les sous-documents
+
+- Pour  créer un document maître: `fichier - nouveau-document maitre`. L'extension de ce document est  `odm`
+- Pour rattacher un sous-document au document maître: dans le navigateur, sélectionner là où doit être inséré le sous-document (au début, il y a simplement: "text"), cliquer  sur `insérer` et choisir  `File` (pour utiliser un document déjà existant) ou  `new document`
+- On peut  voir alors les  sous-documents et les textes rédigés dans le document-maître
+- Dans le navigateur, `update` permet de mettre à jour ce que l'on voir lorsque l'on a modifié un sous-document
+- On peut ainsi travailler chaqye partie ou sous-partie dans un document différent, et tout regrouper dans le document maître, dans lequel on fera apparaître par exemple la table des matières
+
+
 
