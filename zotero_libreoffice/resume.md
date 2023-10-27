@@ -113,4 +113,8 @@ Page de titre
 - On peut ainsi travailler chaqye partie ou sous-partie dans un document différent, et tout regrouper dans le document maître, dans lequel on fera apparaître par exemple la table des matières
 
 
+### Enregistrement automatique et versions
 
+- `Outils - options - Load/save - General`: choisir `save autorecovery` : sauvegarde automatique toutes les 10 minutes (on peut changer la durée). **nb** il faut le faire pour chaque document de travail.
+- Enregistrer des versions: `Fichiers- Versions`: cocher `always save a new version on closing`: cela permet d'enregistrer un historique de l'état du document
+- à chaque étape important de la rédaction: enregistrer manuellement une version en y mettant un commentaire. Il est possible ensuite, en cliquant sur la version et en choisissant `open`, d'ouvrir un état antérieu du document.
