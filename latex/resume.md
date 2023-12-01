@@ -1,7 +1,6 @@
 ![LaTeX](LaTeX_logo.svg.png)
 
 
-[TOC]
 
 # Premiers pas
 
