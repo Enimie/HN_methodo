@@ -126,7 +126,7 @@ corps du texte
 |`\footnote{#1}`|Note de bas de page|
 |`\marginpar{#1}`|Note marginale|
 
-- L'apparence du numéro dans la note de bas de page peut être modifiée avec `polyglossia`. Mettre  à la commande `\setmainlanguage{french}`, dans l'argument optionnel, l'option `frenchfootnote=true`
+<!-- - L'apparence du numéro dans la note de bas de page peut être modifiée avec `polyglossia`. Mettre  à la commande `\setmainlanguage{french}`, dans l'argument optionnel, l'option `frenchfootnote=true`-->
 
 
 ### Listes
@@ -488,8 +488,8 @@ Exemple:
 	+  les clefs de citation restent telles quelles.
 	+ les *keywords* sont importées dans "marqueurs"
 - Remarques:
-	+ certains champs bibtex  n'existent pas dans zotero. Ex: *maintitle*. Ils sont importés dans *extra* sous la forme: `tex.maintitle: XXX`. 
-	+ Le formatage au sein d'un champ (des italiques par exemple) est possible au moyen de balises html. AInsi `\emph{xx}`devient `<i>xx</i>`
+	+ certains champs bibtex  n'existent pas dans zotero. Ex: *maintitle*, *volumes*, *gender*, *venue*. Ils sont importés dans *extra* sous la forme: `tex.maintitle: XXX`. 
+	+ Le formatage au sein d'un champ (des italiques par exemple) est possible au moyen de balises html. AInsi `\emph{xx}`devient `<i>xx</i>`. Pour les autres possibilités de formatage, voir la [Documentation Zotero](https://www.zotero.org/support/kb/rich_text_bibliography).
 
 -> on peut exploiter ces possibilités pour donner plus de souplesse à Zotero
 
