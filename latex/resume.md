@@ -289,6 +289,8 @@ Exemples:
  	 `\footcite[Sur ce sujet, voir][]{maieul_rouquette_2012}`
 	 `\footcite[\pno~99 et suivantes]{maieul_rouquette_2012}`
 
+- pour ne citer respectivement que l'auteur et le titre d'une référence: `\citeauthor{clef}`et `\citetitle{clef}
+
 - pour imprimer la bibliographie: `\printbibliography`
 
 4. Trois compilations sont nécessaires: 
@@ -420,7 +422,7 @@ Exemples de style:
 Pour plus de précisions, voir le manuel p.74 sq
 
 - Il existe un style de citations qui suit les normes de l'École des Chartes:
-	+  [biblatex-enc](https://github.com/Jean-Baptiste-Camps/biblatex-enc)
+	+  [biblatex-enc](https://ctan.org/pkg/biblatex-enc)
 	+ on peut l'installer dans son dossier `texmf local` (par exemple `/usr/local/texlive/texmf-local/tex/latex/biblatex-enc`) (voir le readme du style).
 	+ **nb**: pour en apprendre plus sur l'arborescence d'une distribution TeX et ce que signifie `texmf local`, voir: [Guide pratique de Tex Live 2023](https://www.tug.org/texlive/doc/texlive-fr/texlive-fr.pdf) p.7, ou Daniel Flipo, [Admninistration d'une installation TeX](http://daniel.flipo.free.fr/doc/tex-admin/TeX-admin.pdf)
 	+ On le passe ensuite en option à `biblatex`: `\usepackage[style=enc]{biblatex}`
@@ -512,3 +514,29 @@ Installation:
 **RQ** Quand vous "aspirez" une référence bibliographique dans Zotero, pensez à vérifier que les informations sont bien entrées; vous pouvez utiliser le champs "extra" pour rajouter des champs propres à bibtex (voir supra)
 
 
+
+## Créer ses commandes et environnements (1)
+
+### Syntaxe pour créer une commande
+
+-  `\newcommand{#1}[#2]{#3}`. `#1`= nom de la commande; `#2`=nombre d'arguments de la nouvelle commande; `#3`= code de la nouvelle commande
+- Les commandes doivent être créées dans le préambule.
+
+- Syntaxe pour créer une commande avec argument optionel, grâce au package `xargs`:
+
+- `\newcommandx{#1}[#2][#3]{#4}` `#1`=nom de la commande; `#2`= nombre d'arguments; `#3`=liste des arguments optionnels (liste de numéros indiquant la position des arguments optionnels dans la commande). Une  valeur par défaut peut être attribuée aux arguments optionnels, consulter le manuel de `xarg`; `#4`= le code
+
+- Tester si un argument est vide grâce au packet `etoolbox`: utiliser la commande `\ifstrempty{#1}{#2}{#3}`. `#1`=la chaine de caractères que l'on va tester (ça peut être un argument de notre ouvelle commande, par exemple `#1`); `#2`=ce qui se passe si la chaine est vide; `#3`=ce qui se passe sinon.
+
+### Syntaxe pour créer un environnement
+
+-`\newenvironment{#1}[#2]{#3}{#4}`. `#1`= nom de l'environnement; `#2`=nombre d'arguments du nouvel environnement; `#3`= code appelé à l'ouverture de l'environnement; `#4` = code appelé à la fermeture de l'environnement
+
+- Pour créer un environnement avec arguments optionnels, utilisez le package `xargs`
+
+
+- **nb** Il n'est pas possible d'appeler l'argument du nouvel environnement dans la *dernière partie* de la commande `newenvironment` (celle qui indique le code qui sera appelé à la fermeture de l'environnement). Il faut:
+-  créer une "boite de sauvegarde" en mettant, avant la définition du nouvel environnement, `\newsavebox{\boite}` (on peut bien sûr donner un autre nom à la boite). 
+- Dans le code appelé à l'ouverture du nouvel environnement, mettre l'argument dans cette boite, par exemple: `\savebox{\boite}{#1}`
+- Dans le code appelé à la fermeture de l'environnement, on peut utiliser cette boite (et donc le contenu de l'argument) en utilisant: `\usebox{\boite}`.
+- Pour des exemples d'utilisation, voir l'ouvrage de LOZANO, Vincent, cité plus haut et mis dans la biliographie.
