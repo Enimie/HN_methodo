@@ -1,0 +1,29 @@
+\documentclass[12pt]{article}
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{polyglossia}
+\setmainlanguage{french}
+
+\usepackage{reledmac}%Faire une édition critique
+\usepackage{reledpar}%Mettre deux textes en vis-à-vis
+
+\begin{document}
+	
+	
+	\section*{Aller plus loin avec reledmac et reledpar}
+
+Pour ces exercices, vous trouverez les textes à utiliser ici:
+
+\href{https://neoclassica.co/2020/05/25/le-poeme-ad-lesbiam-de-catulle-traductions-et-imitations/}{Catulle et ses traductions}
+
+\subsection*{Facile}
+Apprenez à vous servir de \verb|reledmac| pour éditer des poèmes (reportez-vous au manuel ou à l'ouvrage de M. Rouquette mis en bibliographie). Numérotez les vers du poème de Catulle  \emph{Ad Lesbiam}.
+
+
+
+\subsection*{Intermédiaire}
+Mettez en vis-à-vis le poème de Catulle et sa traduction anglaise par Sir Richard Francis Burton.
+
+\subsection*{Difficile}
+Créez une commande \verb|\variantes{#1}{#2}| telle que \#1 corresponde au lemme et  \#2 soit le contenu d'une note critique. Testez.
+\end{document}
