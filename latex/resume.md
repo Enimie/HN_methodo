@@ -710,6 +710,21 @@ Texte de gauche
 - Pour la poésie, chaque vers est une boîte
 - en prose, les boîtes sont délimitées par `\pstart` et `\pend`.
 
+# Naviguer dans un long document
+
+## Les renvois internes
+
+
+## Les index
+
+# Utiliser un document maître
+
+- Créer un document (ou utiliser celui fourni) contenant le préambule, les balises `\begin{document}` et `\end{document}`, et au sein de ces balises les grandes divisions (`\frontmatter` et `\appendix` si besoin, `\mainmatter`pour le corps du texte et `\backmatter` pour la bibliographie, le(s) index et table(s) des figures ou des tableaux,  la table des matières
+- Créer un document `.tex` par structure logique (chapitre ou section, selon la taille du travail).
+	+ ces documents "enfants" ne **doivent pas** avoir de préambule, puisque le préambule est contenu dans le document maître
+	+ appeler dans le document "maître" ces documents "enfants" avec la commande `\input{}` en indiquant le chemin relatif (par exemple: `\input{./frontmatter/section1.tex}` où le point indique l'emplacement du document maître et chaque `/` le passage à un autre dossier-enfant)
+- Compiler le document maître. **nb** Avec TexStudio, il est possible de déclarer un document comme document maître: Option - Document maître - déclarer le document en cours comme document maître explicite. Cela permet ensuite de compiler directement depuis les fichiers enfants (du moment qu'ils sont bien appelés dans le document maître)
+- Autre possibilité: garder l'option "détecter automatiquement le document maître". On pourra compiler depuis n'importe quel fichier appelé dans le document maître, du moment que celui-ci a aussi été ouvert une première fois
 
 # Pour aller plus loin
 
@@ -780,12 +795,14 @@ ROUQUETTE, Maïeul, [XeLaTeX appliqué aux sciences humaines](https://halshs.arc
 
 FRANC, Jean-Pierre, [TikZ, dessiner avec LaTeX](https://sbb169ee77282477c.jimcontent.com/download/version/1454697202/module/10275560298/name/TikZ-Manuel.pdf),
 
+
+KARNAJ, [Zeste de savoir. Présenter du code source dans un document LaTeX](https://zestedesavoir.com/tutoriels/pdf/1848/presenter-du-code-source-dans-un-document-latex.pdf)
+
 LOZANO, Vincent, [Tout ce que vous avez toujours voulu savoir sur LaTeX sans jamais oser le demander](https://archives.framabook.org/docs/latex/framabook5_latex_v1_art-libre.pdf)
 
 OETIKER, Tobias, [Une courte (?) introduction à LaTeX](http://tug.ctan.org/tex-archive/info/lshort/french/lshort-fr.pdf)
 
 TISSEAU, Gérard et DUMAS, Jacque, [TikZ pour l'impatient](http://math.et.info.free.fr/TikZ/bdd/TikZ-Impatient.pdf)
-
 
 
 ## Autres ressources
