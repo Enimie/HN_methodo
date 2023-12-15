@@ -1,13 +1,10 @@
 \documentclass{article}
 \usepackage{fontspec}
 \usepackage{xunicode}
-\usepackage{polyglossia}
-\setmainlanguage{french}
+\usepackage[french]{babel}%on peut préciser d'autres langues. La nouvelle version de polyglossia pose probleme avec le style de l'EnC
 \usepackage{csquotes}%nécessaire pour utiliser le style bibliographique, qui utilise enquote
 
-\usepackage[style=enc,sorting=anonymous]{biblatex}%charger le style de l'EnC (téléchargeable ici https://ctan.org/pkg/biblatex-enc)
-%sorting=anonymous: à utiliser avec biblatex-anonymous
-\usepackage{biblatex-anonymous}% pour mettre les anonymes en premiers
+\usepackage[style=enc,sorting=nyt,maxbibnames=10]{biblatex}%charger le style de l'EnC (téléchargeable ici https://ctan.org/pkg/biblatex-enc)
 
 
 \addbibresource{exo13.bib}
