@@ -25,6 +25,20 @@ corps du texte
 \end{document}
 ```
 
+**Attention**
+- La dernière version du package `polyglossia` pose des problèmes avec le style bibliographique de l'ÉnC. Charger à sa place `babel`: remplacer les lignes
+
+```
+\usepackage{polyglossia} %package pour gérer les langues
+\setmainlanguage{french}
+```
+par: 
+```
+\usepackage[french]{babel}
+```
+
+
+
 - Quelques classes possibles: `article book beamer memoir`
 - Quelques options possibles de l'appel de classe:
 	
@@ -143,6 +157,7 @@ corps du texte
 
 - Pour modifier sur l'ensemble du document le label des environnements `itemize`:  mettre  à la commande `\setmainlanguage{french}` l'option `[frenchitemlabels=true]{french}` pour obtenir un cadratin; pour choisir le label, ajouter ensuite comme option `itemlabels= ` avec le label choisi. 
 - Exemple: `\setmainlanguage[frenchitemlabels=true, itemlabels=\textendash]{french}` pour obtenir un demi-cadratin.
+- **nb** si l'on utilise le package `babel` plutôt que `polyglossia`, les items sont déjà des cadratins
 
 - Pour modifier le label d'un environnement `enumerate` donné, il faut utiliser le package `enumerate`. 
 Exemple: `\begin{enumerate}[label=(\Roman*)]` pour numéroter la liste en chiffres romains entre parenthèses. 
@@ -427,6 +442,13 @@ Pour plus de précisions, voir le manuel p.74 sq
 	+ **nb**: pour en apprendre plus sur l'arborescence d'une distribution TeX et ce que signifie `texmf local`, voir: [Guide pratique de Tex Live 2023](https://www.tug.org/texlive/doc/texlive-fr/texlive-fr.pdf) p.7, ou Daniel Flipo, [Admninistration d'une installation TeX](http://daniel.flipo.free.fr/doc/tex-admin/TeX-admin.pdf)
 	+ On le passe ensuite en option à `biblatex`: `\usepackage[style=enc]{biblatex}`
 
+**Attnetion** La dernière version de polyglossia provoque des erreurs de compilation avec ce style. Deux possibilités:
+- télécharger et utiliser localement la version antérieure de polyglossia en attendant que ce problème soit résolu
+- utiliser le package `babel` à la place de `polyglossia` (voir dans la définition du préambule)
+
+----
+
+**RQ**
 - Pour que les œuvres anonymes soient classées en début de bibliographie, par titre, il faut utiliser le package `biblatex-anonymous`, et ajouter l'option `sorting` à l'appel du package  `biblatex`: 
 
 ```
@@ -434,7 +456,10 @@ Pour plus de précisions, voir le manuel p.74 sq
 \usepackage{biblatex-anonymous}
 ```
 
-**nb** l'appel du package `biblatex-anonymous` doit se faire après l'appel du package `biblatex`
+- l'appel du package `biblatex-anonymous` doit se faire après l'appel du package `biblatex`
+
+**Attention** biblatex-anonymous ne fonctionne pas avec babel mais simplement avec polyglossia.
+
 
 ## Imprimer sa bibliographie
 
