@@ -4,15 +4,6 @@ Vous trouverez sur ce dépôt le contenu pédagogique du cours *Outils pour la r
 
 ## Planning
 
-|Date|Programme|
-|-- |-- |
-|20/10|La recherche documentaire: catalogues et bases de données; Zotéro|
-|27/10|LibreOffice; Introduction à LaTeX|
-|24/11|LaTeX|
-|01/12|LaTeX|
-|08/12|LaTeX|
-|15/12|LaTeX (fin); Git et le versionnage|
-
 
 
 
@@ -20,10 +11,10 @@ Vous trouverez sur ce dépôt le contenu pédagogique du cours *Outils pour la r
 | ---- | -------- | --------- |
 | 7 novembre 2024  | 15h-17h | La recherche documentaire;  Zotéro| 
 | 14 novembre 2024 | 15h-17h | Latex: introduction, notions de base |
-| 21 novembre 2024 | 15h-17h | Mettre en forme, mettre en sens  |
-| 5 décembre 2024     | 15h-17h  | Les éléments non textuels |
-| 12 décembre 2024     | 15h-17h  | Biblatex, betterbibtex et zotero. Réaliser une édition critique avec LaTeX |
-| 20 décembre 2024 | 14h-16h |Rédiger un mémoire en LaTeX; Git et le versionnage|
+| 21 novembre 2024 | 15h-17h | Mettre en forme, mettre en sens |
+| 5 décembre 2024     | 15h-17h  | Mettre en forme sa bibliographie:  Biblatex, betterbibtex et zotero. Réaliser une édition critique avec LaTeX |
+| 12 décembre 2024     | 15h-17h  |Les éléments non textuels: images, tableaux, graphiques|
+| 20 décembre 2024 | 14h-16h |Rédiger un mémoire en LaTeX. Git et le versionnage|
 
 
 
