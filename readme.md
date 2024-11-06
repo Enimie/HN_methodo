@@ -14,6 +14,19 @@ Vous trouverez sur ce dépôt le contenu pédagogique du cours *Outils pour la r
 |15/12|LaTeX (fin); Git et le versionnage|
 
 
+
+
+| Date | Horaires | Programme |
+| ---- | -------- | --------- |
+| 7 novembre 2024  | 15h-17h | La recherche documentaire;  Zotéro| 
+| 14 novembre 2024 | 15h-17h | Latex: introduction, notions de base |
+| 21 novembre 2024 | 15h-17h | Mettre en forme, mettre en sens  |
+| 5 décembre 2024     | 15h-17h  | Les éléments non textuels |
+| 12 décembre 2024     | 15h-17h  | Biblatex, betterbibtex et zotero. Réaliser une édition critique avec LaTeX |
+| 20 décembre 2024 | 14h-16h |Rédiger un mémoire en LaTeX; Git et le versionnage|
+
+
+
 ## Installation Zotero + Libreoffice sur linux en ligne de commande
 
 Taper dans le terminal les commandes suivantes:
@@ -25,7 +38,7 @@ Taper dans le terminal les commandes suivantes:
 4. `sudo apt install libreoffice`
 5. Ouvrez Zotero en tapant `zotero-snap` dans le terminal. Installez sur linux le connecteur internet en suivant les indications;  "aspirez" au moins une référence dans Zotero pour pouvoir tester.
 6. Ouvrez libreoffice en tapant `libreoffice` dans le terminal.
-7. Si les icônes de Zotero n'apparaissent pas dans la barre d'outilde libreoffice, allez dans Outils-Gestionnaire des extensions.  Cliquez sur Ajoutez;  allez sur les dossiers système (dossiers non visibles; il faut cliquer sur la petite flèche à gauche de votre nom avec la maison, puis sur la petite icône de disque-dur), et choisissez `/snap/zotero-snap/current/extensions/zoteroOenOfficeIntegration@zotero.org/install/Zotero_OpenOffice_Integration.oxt`
+7. Si les icônes de Zotero n'apparaissent pas dans la barre d'outil de libreoffice, allez dans Outils-Gestionnaire des extensions.  Cliquez sur Ajoutez;  allez sur les dossiers système (dossiers non visibles; il faut cliquer sur la petite flèche à gauche de votre nom avec la maison, puis sur la petite icône de disque-dur), et choisissez `/snap/zotero-snap/current/extensions/zoteroOenOfficeIntegration@zotero.org/install/Zotero_OpenOffice_Integration.oxt`
 7. Redémarrez libreoffice.
 8. testez en ouvrant libreoffice et cliquez sur l'icône Add/Edit Citation: une fenêtre "mise en forme rapide des citations" doit apparaître.
 
@@ -52,7 +65,7 @@ Une fois le fichier téléchargé, décompressez-le. Pour cela,  tapez dans le t
 
 ### 3/ Installer la texlive
 
-1. Placez-vous dans le dossier que vous avez décompressé par la commande `cd` suivie du nom du dossier (`install-tl-20230926`; le nombre peut être différent). Vous pouvez utiliser la touche Tab pour activer l'autocomplétion du nom du dossier.
+1. Placez-vous dans le dossier que vous avez décompressé par la commande `cd` suivie du nom du dossier (`install-tl-20241106`; le nombre peut être différent). Vous pouvez utiliser la touche Tab pour activer l'autocomplétion du nom du dossier.
 2. Tapez `sudo perl install-tl`
 3. Si vous avez de la place sur votre ordinateur et une bonne connexion internet: répondez `i` ("start installation to hard disk"). **Cette option est à privilégier**
 4. Si votre connexion est mauvaise, ou que vous avez trop peu de place, vous pouvez au choix:
