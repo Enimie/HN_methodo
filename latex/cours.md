@@ -1,3 +1,12 @@
+---
+title: LaTeX et la rédaction de mémoire  (EnC 2556) 
+subtitle: (pdf réalisé avec pandoc à partir du fichier cours.md)
+author: Enimie Rouquette (2024-2025)
+fontsize: 12pt
+toc: true
+---
+
+
 ![LaTeX](LaTeX_logo.svg.png)
 
 
@@ -7,9 +16,9 @@
 ## La structure d'un document
 
 - un préambule
-- le corps du texte entre les balises `begin{document}` et `\end{document}`
+- le corps du texte entre les balises `\begin{document}` et `\end{document}`
 
-```
+```latex
 \documentclass[12pt,a4paper]{article} %appel de classe
 %appel des packages:
 \usepackage{fontspec} %package pour gérer les fontes
@@ -28,12 +37,12 @@ corps du texte
 **Attention**
 - La dernière version du package `polyglossia` pose des problèmes avec le style bibliographique de l'ÉnC. Charger à sa place `babel`: remplacer les lignes
 
-```
+```latex
 \usepackage{polyglossia} %package pour gérer les langues
 \setmainlanguage{french}
 ```
 par: 
-```
+```latex
 \usepackage[french]{babel}
 ```
 
@@ -140,8 +149,8 @@ par:
 |`\footnote{#1}`|Note de bas de page|
 |`\marginpar{#1}`|Note marginale|
 
-<!-- - L'apparence du numéro dans la note de bas de page peut être modifiée avec `polyglossia`. Mettre  à la commande `\setmainlanguage{french}`, dans l'argument optionnel, l'option `frenchfootnote=true`-->
-
+- L'apparence du numéro dans la note de bas de page peut être modifiée avec `polyglossia`. Mettre  à la commande `\setmainlanguage{french}`, dans l'argument optionnel, l'option `frenchfootnote=true`
+- Ceci n'est pas nécessaire si on utilise le package `babel`
 
 ### Listes
 
@@ -156,13 +165,13 @@ par:
 - Si l'on met un argument optionnel à `\item`, on peut modifier ponctuellement le label (l'élément précédant l'entrée dans la liste: tiret, point,...)
 
 - Pour modifier sur l'ensemble du document le label des environnements `itemize`:  mettre  à la commande `\setmainlanguage{french}` l'option `[frenchitemlabels=true]{french}` pour obtenir un cadratin; pour choisir le label, ajouter ensuite comme option `itemlabels= ` avec le label choisi. 
-- Exemple: `\setmainlanguage[frenchitemlabels=true, itemlabels=\textendash]{french}` pour obtenir un demi-cadratin.
+- Exemple: `\setmainlanguage[frenchitemlabels=true, 
+itemlabels=\textendash]{french}` pour obtenir un demi-cadratin.
 - **nb** si l'on utilise le package `babel` plutôt que `polyglossia`, les items sont déjà des cadratins
 
 - Pour modifier le label d'un environnement `enumerate` donné, il faut utiliser le package `enumerate`. 
-Exemple: `\begin{enumerate}[label=(\Roman*)]` pour numéroter la liste en chiffres romains entre parenthèses. 
-Compteurs possibles: `\alph*` (lettres de l'alphabet), `\Alph*` (lettres en majuscules), `roman*` (chiffres romains en minuscule), `\Roman*` (chiffres romains en majuscule). 
--**nb**: La commande de compteur (`\alph*`, etc) ne doit pas directement être accolée au signe =
+Exemple: `\begin{enumerate}[(I)]` pour numéroter la liste en chiffres romains entre parenthèses; `\begin{enumerate}[exemple 1:]` pour faire précéder chaque item de `exemple` suivi du numéro et de deux points.
+Compteurs possibles: `a` (lettres de l'alphabet), `A` (lettres en majuscules), `i` (chiffres romains en minuscule), `I` (chiffres romains en majuscule), `1` (chiffres arabes, par défaut). 
 
 ### Les citations
 
@@ -201,23 +210,24 @@ Compteurs possibles: `\alph*` (lettres de l'alphabet), `\Alph*` (lettres en maju
 ### Commandes "à bascule" pour changer  la taille des caractères
 
 - Si l'on veut modifier sur une portion de texte donnée la taille des caractères, il faut utiliser une commande à bascule. Le comportement de ce type de commandes est différent: elles ne prennent pas d'argument, mais sont insérées entre accolades; le texte dont la taille change est entre les accolades, après la commande.
-- Exemple: {\large un texte plus gros}
+- Exemple: `{\large un texte plus gros}` donne {\large un texte plus gros}
+
 - La taille obtenue est relative: elle dépend de la taille définie lors de l’appel de classe.
 
  Liste des commandes à bascule, pour un résultat du plus petit au plus gros (`normalsize` correspond à la taille du corps du texte, `footnotesize` à la taille des notes de bas de page):
 
 |Commande|
 |-- |
-|{\tiny }|
-|{\scriptsize }|
-|{\footnotesize }|
-|{\small }|
-|{\normalsize }|
-|{\large }|
-|{\Large }|
-|{\LARGE }|
-|{\huge }|
-|{\Huge }|
+|`{\tiny }`|
+|`{\scriptsize }`|
+|`{\footnotesize }`|
+|`{\small }`|
+|`{\normalsize }`|
+|`{\large }`|
+|`{\Large }`|
+|`{\LARGE }`|
+|`{\huge }`|
+|`{\Huge }`|
 
 
 ### Environnements modifiant l'alignement du texte
@@ -239,8 +249,10 @@ Compteurs possibles: `\alph*` (lettres de l'alphabet), `\Alph*` (lettres en maju
 |`\noindent`|Pas d'indentation au début du paragraphe|
 |`\par`|Nouveau paragraphe (à utiliser dans la définition de commandes ou d'environnements)|
 
-**nb**: `\newpage` va mettre tout l'espace disponible restant en bas de la page; `\pagebreak` va répartir cet espace sur la page. Pour cette raison, `\newpage` vous sera plus utile.
+**nb**: 
 
+- `\newpage` va mettre tout l'espace disponible restant en bas de la page; `\pagebreak` va répartir cet espace sur la page. Pour cette raison, `\newpage` vous sera plus utile.
+- `\newline` ou `\\`, de même que `\par`, sont à réserver pour la définition de commandes ou d'environnement, et ne doivent qu'exceptionnellement être utilisé dans le corps du texte. Ces commandes **ne doivent pas être utilisées**  pour créer des paragraphes au cours de la phrase (il suffit de laisser une ligne blanche!) , car elles peuvent provoquer des problèmes de répartition di blanc dans la page. 
 
 ### Encadrer du texte en le mettant dans des boites
 
@@ -254,6 +266,37 @@ Il existe aussi le package `fancybox` pour créer des boites encadrées
 
 Sur la notion de boites dans LaTeX, voir LOZANO, Vincent, [Tout ce que vous avez toujours voulu savoir sur LaTeX sans jamais oser le demander](https://archives.framabook.org/docs/latex/framabook5_latex_v1_art-libre.pdf), p. 73 *sq*.
 
+Créer ses commandes et environnements
+=====================================
+
+Syntaxe pour créer une commande
+-------------------------------
+
+-  `\newcommand{#1}[#2]{#3}`. `#1`= nom de la commande; `#2`=nombre d'arguments de la nouvelle commande; `#3`= code de la nouvelle commande
+- Les commandes doivent être créées dans le préambule.
+
+- Syntaxe pour créer une commande avec argument optionel, grâce au package `xargs`:
+
+- `\newcommandx{#1}[#2][#3]{#4}` `#1`=nom de la commande; `#2`= nombre d'arguments; `#3`=liste des arguments optionnels (liste de numéros indiquant la position des arguments optionnels dans la commande). Une  valeur par défaut peut être attribuée aux arguments optionnels, consulter le manuel de `xarg`; `#4`= le code
+
+- Tester si un argument est vide grâce au packet `etoolbox`: utiliser la commande `\ifstrempty{#1}{#2}{#3}`. `#1`=la chaine de caractères que l'on va tester (ça peut être un argument de notre ouvelle commande, par exemple `#1`); `#2`=ce qui se passe si la chaine est vide; `#3`=ce qui se passe sinon.
+
+Syntaxe pour créer un environnement
+-----------------------------------
+
+-`\newenvironment{#1}[#2]{#3}{#4}`. `#1`= nom de l'environnement; `#2`=nombre d'arguments du nouvel environnement; `#3`= code appelé à l'ouverture de l'environnement; `#4` = code appelé à la fermeture de l'environnement
+
+- Pour créer un environnement avec arguments optionnels, utilisez le package `xargs`
+
+
+- **nb** Il n'est pas possible d'appeler l'argument du nouvel environnement dans la *dernière partie* de la commande `newenvironment` (celle qui indique le code qui sera appelé à la fermeture de l'environnement). Il faut:
+-  créer une "boite de sauvegarde" en mettant, avant la définition du nouvel environnement, `\newsavebox{\boite}` (on peut bien sûr donner un autre nom à la boite). 
+- Dans le code appelé à l'ouverture du nouvel environnement, mettre l'argument dans cette boite, par exemple: `\savebox{\boite}{#1}`
+- Dans le code appelé à la fermeture de l'environnement, on peut utiliser cette boite (et donc le contenu de l'argument) en utilisant: `\usebox{\boite}`.
+- Pour des exemples d'utilisation, voir l'ouvrage de LOZANO, Vincent, cité plus haut et mis dans la biliographie.
+
+
+
 # Gérer sa bibliographie: biblatex, biber et Zotero
 
 ## Principes
@@ -263,7 +306,7 @@ Sur la notion de boites dans LaTeX, voir LOZANO, Vincent, [Tout ce que vous avez
 - chaque entrée comporte un certain nombre d'éléments de description bibliographique (nature de la référence, titre, auteur, date, etc), chacun indiqué dans le champ correspondant.
 - exemple d'entrée: 
 
-```
+```latex
 @Book{maieul_rouquette_2012, 
   author = {Maïeul Rouquette and Enimie Rouquette and Brendan Chabannes},
   title = {(Xe)\LaTeX{}  appliqué aux sciences humaines},
@@ -280,7 +323,7 @@ Dans cet exemple, la référence est un livre (`@book`), sa clef est `maieul_rou
 
 Exemple de préambule appelant `biblatex` et un fichier bibliographique:
 
-```
+```latex
 \documentclass[a4paper]{book}
 \usepackage{fontspec}
 \usepackage{xunicode}
@@ -299,12 +342,13 @@ Exemple de préambule appelant `biblatex` et un fichier bibliographique:
 	- Si la postnote contient aussi du texte, il faut faire précéder le numéro de pagination de la commande `\pno~`. 
 
 Exemples: 
+```latex
+\footcite[Sur ce sujet, voir][99]{maieul_rouquette_2012}
+\footcite[Sur ce sujet, voir][]{maieul_rouquette_2012}
+\footcite[\pno~99 et suivantes]{maieul_rouquette_2012}
+```
 
-	 `\footcite[Sur ce sujet, voir][99]{maieul_rouquette_2012}`
- 	 `\footcite[Sur ce sujet, voir][]{maieul_rouquette_2012}`
-	 `\footcite[\pno~99 et suivantes]{maieul_rouquette_2012}`
-
-- pour ne citer respectivement que l'auteur et le titre d'une référence: `\citeauthor{clef}`et `\citetitle{clef}
+- pour ne citer respectivement que l'auteur et le titre d'une référence: `\citeauthor{clef}` et `\citetitle{clef}`
 
 - pour imprimer la bibliographie: `\printbibliography`
 
@@ -428,7 +472,7 @@ Exemples de style:
 
 |Style|Description|
 |-- |-- |
-|numeric| chaque entrée se voit attribuer un numéro, qui est appellé lorsque l'on renvoie à cee entrée.|
+|numeric| chaque entrée se voit attribuer un numéro, qui est appellé lorsque l'on renvoie à cette entrée.|
 |authortitle| sont indiqués seulement l'auteur et le titre de l’œuvre|
 |verbose| la description complète de l’entrée est donnée la première fois, une version abrégée est affichée ensuite.|
 |verbose-ibid| Comme verbose, mais avec l’abréviation *ibidem*|
@@ -442,7 +486,7 @@ Pour plus de précisions, voir le manuel p.74 sq
 	+ **nb**: pour en apprendre plus sur l'arborescence d'une distribution TeX et ce que signifie `texmf local`, voir: [Guide pratique de Tex Live 2023](https://www.tug.org/texlive/doc/texlive-fr/texlive-fr.pdf) p.7, ou Daniel Flipo, [Admninistration d'une installation TeX](http://daniel.flipo.free.fr/doc/tex-admin/TeX-admin.pdf)
 	+ On le passe ensuite en option à `biblatex`: `\usepackage[style=enc]{biblatex}`
 
-**Attnetion** La dernière version de polyglossia provoque des erreurs de compilation avec ce style. Deux possibilités:
+**Attention** La dernière version de polyglossia provoque des erreurs de compilation avec ce style. Deux possibilités:
 - télécharger et utiliser localement la version antérieure de polyglossia en attendant que ce problème soit résolu
 - utiliser le package `babel` à la place de `polyglossia` (voir dans la définition du préambule)
 
@@ -451,7 +495,7 @@ Pour plus de précisions, voir le manuel p.74 sq
 **RQ**
 - Pour que les œuvres anonymes soient classées en début de bibliographie, par titre, il faut utiliser le package `biblatex-anonymous`, et ajouter l'option `sorting` à l'appel du package  `biblatex`: 
 
-```
+```latex
 \usepackage[style=enc,sorting=anonymous]{biblatex}
 \usepackage{biblatex-anonymous}
 ```
@@ -469,7 +513,7 @@ Pour plus de précisions, voir le manuel p.74 sq
 
  Exemple: 
 
-```
+```latex
 \printbibliography[keyword=sources-primaires]
 \printbibliography[notkeyword=sources-primaires]
 ```
@@ -481,7 +525,7 @@ Pour plus de précisions, voir le manuel p.74 sq
 
 Exemple: 
 
-```
+```latex
 \documentclass[a4paper]{book}
 \usepackage{fontspec}
 \usepackage{xunicode}
@@ -526,45 +570,18 @@ Exemple:
 - l’inverse n’est pas vrai : les modifications apportées dans le fichier BibTeX ne sont pas “remontées” dans Zotero.
 
 Installation: 
+
 1. télécharger le XPI file et le sauvegarder. **attention: sous firefox, faire clic droit et enregistrer la cible du lien** (un simple clic sur le lien ne marchera pas)
 2. Dans zotero: `extension - ajouter depuis un fichier - installer - redémarrer zotero`
-4. Configurer Betterbibtex pour l'exportation: `outils - betterbibtex -  ouvrir les preference de betterbitex`: 
+3. Configurer Betterbibtex pour l'exportation: `outils - betterbibtex -  ouvrir les preference de betterbitex`: 
 -  onglet `exportation`: 
 	-  decocher "exporter les caractères unicodes"
 	-  choisir "ajouter les url à l'exportation dans le champs url"
 	- onglet divers: décocher "appliquer la capitalisation aux titres"
 - onglet `clef de citation`: possibilité de choisir la façon dont les clefs seront générées
-3. Mettre en place la synchronisation  entre un fichier BibTex et une collection dans Zotero: faire un clic-droit sur la collection à exporter: `exporter - choisir betterbibtex` - cocher "garder à jour"
+4. Mettre en place la synchronisation  entre un fichier BibTex et une collection dans Zotero: faire un clic-droit sur la collection à exporter: `exporter - choisir betterbibtex` - cocher "garder à jour"
 
 **RQ** Quand vous "aspirez" une référence bibliographique dans Zotero, pensez à vérifier que les informations sont bien entrées; vous pouvez utiliser le champs "extra" pour rajouter des champs propres à bibtex (voir supra)
-
-
-
-## Créer ses commandes et environnements (1)
-
-### Syntaxe pour créer une commande
-
--  `\newcommand{#1}[#2]{#3}`. `#1`= nom de la commande; `#2`=nombre d'arguments de la nouvelle commande; `#3`= code de la nouvelle commande
-- Les commandes doivent être créées dans le préambule.
-
-- Syntaxe pour créer une commande avec argument optionel, grâce au package `xargs`:
-
-- `\newcommandx{#1}[#2][#3]{#4}` `#1`=nom de la commande; `#2`= nombre d'arguments; `#3`=liste des arguments optionnels (liste de numéros indiquant la position des arguments optionnels dans la commande). Une  valeur par défaut peut être attribuée aux arguments optionnels, consulter le manuel de `xarg`; `#4`= le code
-
-- Tester si un argument est vide grâce au packet `etoolbox`: utiliser la commande `\ifstrempty{#1}{#2}{#3}`. `#1`=la chaine de caractères que l'on va tester (ça peut être un argument de notre ouvelle commande, par exemple `#1`); `#2`=ce qui se passe si la chaine est vide; `#3`=ce qui se passe sinon.
-
-### Syntaxe pour créer un environnement
-
--`\newenvironment{#1}[#2]{#3}{#4}`. `#1`= nom de l'environnement; `#2`=nombre d'arguments du nouvel environnement; `#3`= code appelé à l'ouverture de l'environnement; `#4` = code appelé à la fermeture de l'environnement
-
-- Pour créer un environnement avec arguments optionnels, utilisez le package `xargs`
-
-
-- **nb** Il n'est pas possible d'appeler l'argument du nouvel environnement dans la *dernière partie* de la commande `newenvironment` (celle qui indique le code qui sera appelé à la fermeture de l'environnement). Il faut:
--  créer une "boite de sauvegarde" en mettant, avant la définition du nouvel environnement, `\newsavebox{\boite}` (on peut bien sûr donner un autre nom à la boite). 
-- Dans le code appelé à l'ouverture du nouvel environnement, mettre l'argument dans cette boite, par exemple: `\savebox{\boite}{#1}`
-- Dans le code appelé à la fermeture de l'environnement, on peut utiliser cette boite (et donc le contenu de l'argument) en utilisant: `\usebox{\boite}`.
-- Pour des exemples d'utilisation, voir l'ouvrage de LOZANO, Vincent, cité plus haut et mis dans la biliographie.
 
 
 
@@ -584,12 +601,13 @@ Installation:
 
 |valeur|effet|
 |-- |-- |
-|h|positionne le flottant à l'emplacement de son appel|
+|h|positionne le flottant à peu près à l'emplacement de son appel|
 |t|positionne le flottant en haut d'une page|
 |b|positionne le flottant en bas d'une page|
 |p|positionne le flottant sur une page dédiée aux flottants|
 
-- **nb** Pour éviter que le flottant n'aille trop loin de l'endroit où on l'a appelé, utiliser la commande `\FloatBarrier` du package `placeins`:  tous les floants appelés avant la commande sont placés avant celle-ci.
+- Les valeurs peuvent être combinées. Je consielle d'utiliser  `htb`
+- **nb** Pour éviter que le flottant n'aille trop loin de l'endroit où on l'a appelé, utiliser la commande `\FloatBarrier` du package `placeins`:  tous les flottants appelés avant la commande sont placés avant celle-ci.
 - Le  package `wrapfig` permet de mettre du texte autour du flottant (voir le manuel)
 
 
@@ -597,7 +615,7 @@ Installation:
 
 ## Insérer une image
 
-- Pour insérer une image, il faut utiliser la commande  `\includegraphics[⟨options⟩]{⟨chemin de l’image⟩}` du package `graphicx`. Pour régler la taille de l'image, indiquer dans l'argument optionnel `scale=xx` où xx est une valeur numérale (au-dessus de 1: l'image est agrandie; en dessous de 1, elle est diminuée). Pour les autres options, voir le manuel.
+- Pour insérer une image, il faut utiliser la commande  `\includegraphics[options]{chemin de l’image}` du package `graphicx`. Pour régler la taille de l'image, indiquer dans l'argument optionnel `scale=xx` où xx est une valeur numérale (au-dessus de 1: l'image est agrandie; en dessous de 1, elle est diminuée). Pour les autres options, voir le manuel.
 - L'environnement `landscape` du package  `lscape` permet de mettre l'image (ou tout autre élément: tableau, texte) en format paysage.
 - le package `adjustbox` permet d'ajuster l'image (ou tout autre flottant) à la taille de la page; voir le manuel
 
@@ -681,19 +699,34 @@ Pour des exemples, voir les exercices.
 ## reledmac
 
 1. Pour numéroter les  lignes:  
-```
+```latex
 \beginnumbering  
  \pstart
 Le texte à numéroter
  \pend
  \endnumbering
 ``` 
- 
-Pour configurer la numérotation, voir le manuel; idem pour la syntaxe des vers. Voir aussi le chapitre 20 de l'ouvrage   [XeLaTeX appliqué aux sciences humaines](https://halshs.archives-ouvertes.fr/halshs-00924546)
 
-Dans le cas de vers, nous aurons: 
+- Pour que chaque paragraphe soit automatiquement mis entre les balises `\pstart`et `\pend`, il faut mettre `\autopar` au début du texte et terminer le texte par une ligne blanche ou la commande `\par`: 
+```latex
+\beginnumbering  
+ \autopar
+premier paragraphe
 
-```
+deuxième paragraphe
+
+etc
+
+ \endnumbering
+``` 
+
+
+
+- Pour configurer la numérotation, voir le manuel; idem pour la syntaxe des vers. Voir aussi le chapitre 20 de l'ouvrage   [XeLaTeX appliqué aux sciences humaines](https://halshs.archives-ouvertes.fr/halshs-00924546)
+
+- Dans le cas de vers, nous aurons: 
+
+```latex
 \beginnumbering
  \stanza
 un vers.&
@@ -715,7 +748,7 @@ Pour des exemples, voir les exercices.
 
 - à charger avec `reledmac`. Sert à mettre deux textes en vis-à-vis. Syntaxe:
 
-```
+```latex
 \begin{pages} %Mettre en vis-à-vis sur deux pages
 	\begin{Leftside}
 Texte de gauche
@@ -754,7 +787,7 @@ Texte de gauche
 ### Création d'un index simple
 
 - Dans le préambule: 
-```
+```latex
 \usepackage{imakeidx}
  \makeindex
 ```
@@ -777,7 +810,7 @@ Texte de gauche
 - Pour chaque index que l'on veut créer, mettre en préambule une commande `\makeindex`, avec dans l'argument optionnel `title="nom de l'index` et `name="clef de l'index"`
 - Exemple: 
 
-```
+```latex
 \usepackage{imakeidx}
 \makeindex[intoc, title=Index général]
 \makeindex[intoc, name=aut, title=Index des auteurs]
@@ -794,13 +827,14 @@ Texte de gauche
 
 ## Les glossaires
 
-```
-\usepackage[toc=true]{glossaries}%doit être appelé après hyperref (exception à la règle)
+```latex
+\usepackage[toc=true]{glossaries}%doit être appelé après hyperref 
+%(exception à la règle)
 \makeglossaries
 ```
 - Définir les entrées de glossaire dans le préambule ou dans un fichier à part, avec la commande `\newglossaryentry{#1}{#2}` où `#1` = la clef de l'entrée, et  `#2` contient le mot et sa définition.  Exemples:
 
-```
+```latex
 \newglossaryentry{ex}{%
 	name={exemple},%
 	description={Illustration% 
@@ -808,11 +842,12 @@ Texte de gauche
 
 \newglossaryentry{co}{%
 	name={concept},%
-	description={Idée générale, représentation mentale et abstraite que l’on a d’un objet}}
+	description={Idée générale, représentation mentale 
+et abstraite que l’on a d’un objet}}
 ```
 - on appele dans le corps du texte les  mots définis dans le glossaire au moyen de la commande `\gls{entree_du_glossaire}`. Exemple: `\gls{ex}`
 -  pour compiler le glossaire, si l'on a en plus un index,  il faut lancer de le terminal la commande `makeglossaries nomdufichier`. Texstudio le fait avec la commande: `outil-glossaire` (F9)
-- Pour imprimer le glossaire: `\printglossary`. On peut modifier le titre en argument optionnel: `\printglossary[title=le nouveau titre]
+- Pour imprimer le glossaire: `\printglossary`. On peut modifier le titre en argument optionnel: `\printglossary[title=le nouveau titre]`
 - Pour faire apparaître le glossaire dans la table des matière, on passe une option à l'appel de package `\usepackage[toc=true]{glossaries}`
 - on peut créer un glossaire dans un fichier à part et l'appeler dans le preambule par `\loadglsentries{fichier.tex}`
 
@@ -823,7 +858,7 @@ Texte de gauche
 
 - Il est possible d'indiquer des règles d'hyphénation (de césure) pour des mots précis, par langue:
 
-```
+```latex
 \begin{hyphenrules}{french}
 	\hyphenation{}
 \end{hyphenrules}
@@ -842,20 +877,23 @@ Exemple;  `\addtocounter{ex}{1}`: on ajoute 1 au compteur "ex".
 - Afficher la valeur actuelle du compteur: `\theNom_du_compteur`. Exemple; `\theex`
 affichera la valeur du compteur `ex`
 - autres façon d'afficher la valeur du compteur: 
-   + \roman{ex} affichera la valeur du compteur "ex" en  nombre romains minuscules  
-   + \Roman{ex} affichera la valeur du compteur "ex" en nombre romains majuscules 
-   + \alph{ex} affichera la valeur du compteur "ex" en lettres minuscules   
-   + \Alph{ex} affichera la valeur du compteur "ex" en lettres majuscules 
+   + `\roman{ex}` affichera la valeur du compteur "ex" en  nombre romains minuscules
+   + `\Roman{ex}` affichera la valeur du compteur "ex" en nombre romains majuscules`
+   + `\alph{ex}` affichera la valeur du compteur "ex" en lettres minuscules 
+   + `\Alph{ex}` affichera la valeur du compteur "ex" en lettres majuscules 
 
 - Exemple d'utilisation de compteur dans un nouvel environnement:
-```
+
+```latex
 \newcounter{ex}%création du compteur "ex"
 \newenvironment{exemple}%
-{\addtocounter{ex}{1}\textbf{Exemple \theex}}%à l'ouverture de l'environnement, on ajoute 1 au compteur "ex", et on fait apparaître en gras le numéro de l'exemple avec \theex
+{\addtocounter{ex}{1}\textbf{Exemple \theex}}%à l'ouverture de l'environnement, 
+%on ajoute 1 au compteur "ex",
+% et on fait apparaître en gras le numéro de l'exemple avec \theex
 {}%il ne se passe rien à la fermeture de l'environnement
 ```
 ce qui donnera l'utilisation suivante, où les exemples seront numérotés:
-```
+```latex
 \begin{exemple}
 Un premier exemple
 \end{exemple}
@@ -874,7 +912,9 @@ Un second exemple
 - Compiler le document maître. **nb** Avec TexStudio, il est possible de déclarer un document comme document maître: Option - Document maître - déclarer le document en cours comme document maître explicite. Cela permet ensuite de compiler directement depuis les fichiers enfants (du moment qu'ils sont bien appelés dans le document maître)
 - Autre possibilité: garder l'option "détecter automatiquement le document maître". On pourra compiler depuis n'importe quel fichier appelé dans le document maître, du moment que celui-ci a aussi été ouvert une première fois
 
-# Pour aller plus loin
+
+# "Trucs" et ressources utiles
+
 
 ## Quelques *packages* 
 
@@ -883,6 +923,7 @@ Vous pouvez chercher des packages adaptés à vos besoins sur le site du [CTAN](
 |Package|Usage|
 |-- |-- |
 |`adjustbox`|Adapter au mieux la taille d'un flottant|
+|`array`|améliorer les tableaux|
 |`biblatex`|Bibliographie|
 |`biblatex-manuscripts-philology`|Décrire dans une base bibliographique des manuscripts|
 |`biblatex-multiple-dm`|Pouvoir utiliser plusieurs modèles de données avec `biblatex`|
@@ -891,7 +932,7 @@ Vous pouvez chercher des packages adaptés à vos besoins sur le site du [CTAN](
 |`endnote`|Créer des notes de fin|
 |`enumitem`|Modifier l'apparence des listes|
 |`etoolbox`|Commandes LaTeX remplaçant des commandes TeX (difficulté +++ ; pour ceux qui aiment programmer!). Comporte des commandes pour des instructions de type if... then.. else|
-|`fancyhdr`[Personnaliser la mise en page|Améliorer l'environnement `tabular`: indiquer par exemple la taille des colonnes`|
+|`fancyhdr`|Personnaliser la mise en page|
 |`framed`|Encadrer, surligner,... du texte|
 |`geometry`|Modifier la géométrie de la page (marges)|
 |`graphicx`|Insérer des images, manipuler des boites (rotation,...)|
@@ -933,6 +974,7 @@ Vous pouvez chercher des packages adaptés à vos besoins sur le site du [CTAN](
 - `! Missing number, treated as zero`: on a appelé un argument dans la définition d'une nouvelle commande ou d'un nouvel environnement, sans indiquer en option qu'il y aurait un argument
 - `! Illegal parameter number in definition of \<nom>`: on appelle, dans la définition d'une nouvelle commande ou d'un nouvel environnement, un argument d'un nombre plus élevé que le nombre d'argument indiqué en option
 - ` Missing $ inserted`: on a tapé une commande mathématique sans la mettre entre les symboles `$`.
+- `Nested note`: une `footnote` dans une autre.
  
 
 
