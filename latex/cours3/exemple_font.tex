@@ -1,0 +1,21 @@
+\documentclass[12pt]{book}
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{polyglossia}
+\setmainlanguage{french}
+
+\setmainfont{LibertinusSerif-Regular}%pour sélectionner sa police principale si on veut la changer
+%
+
+%définir une nouvelle famille de police (pour un usage donné au sein d'un doculent: par exemple grec, araméen,... ou ici des smiley)
+%la police doit être installée sur l'ordinateur!
+%la police Humeur, par exemple,  peut être téléchargée ici: https://www.dafont.com/fr/search.php?q=humeur
+\newfontfamily\Smielyfnt{Humeur}
+\newcommand{\smiley}[1]{{\Smielyfnt #1}}
+\begin{document}
+
+Tester un changement de police
+
+
+insérer des smiley: \smiley{abcd}
+\end{document}
