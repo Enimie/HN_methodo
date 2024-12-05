@@ -185,7 +185,6 @@ Compteurs possibles: `a` (lettres de l'alphabet), `A` (lettres en majuscules), `
 |`\url{#1}`|Créer un lien vers une URL. Utiliser le package `hyperref` pour avoir un lien cliquable (à charger EN DERNIER) pour éviter des problèmes de compatibilité avec d'autres package|
 |`verse` (requiert le package `verse`|Pour citer des vers. Voir le manuel|
 
-
 ## Mettre en forme: quelques commandes et environnements
 
 ### Commandes portant sur le style de caractères
@@ -914,6 +913,43 @@ Un second exemple
 
 
 # "Trucs" et ressources utiles
+
+
+Citer du code
+-------------
+
+- package `minted`
+- prérequis: avoir installé Python ainsi que [Pygments](https://pygments.org/)
+- Attention:  la compilation doit se faire avec l'option `-shell-escape`  passée à la commande `xelatex`: il est possible de  configurer  TexStudio pour cela.
+- utilisation: `\begin{minted}{nom du langage} ... \end{minted}`
+- pour connaître la liste des langages possibles, taper dans le terminal `pygmentize -L lexers`
+- attention, les tabulation ou les espaces surnuméraires apparaissent dans la coloration, penser à les enlever
+- il est possible en argument à l'environnement d'ajouter les options `linenos` (numéroter les lignes) et `firstnumber=nombre` pour faire commencer la numérotation au nombre indiqué.
+
+Exemple:
+
+```
+\begin{minted}[linenos, firstnumber=3]{python}
+def f(x):
+ return x**2
+\end{minted}
+```
+
+## Utiliser plusieurs polices de caractères
+
+- La package `fontspec`permet d'utiliser plusiuers police de caractères unicode. 
+- Pour indiquer la police de caractères principale: `\setmainfont{nom de la police}`. Exemple: `\setmainfont{LibertinusSerif-Regular}`
+- il est possible d'indiquer une police pour les caractères sans empattement avec la commande `\setsansfont`, etc.
+- On peut définir une nouvelle "famille" de caractère qui sera utilisée pour une destination précise (par exemple: pour le grec, pour l'araméen, etc), avec la commande `\newfontfamily\nomdelafamille{nom de la police}`. Il faut ensuite créer une commande ou un environnement qui utilisera cette police. Par exemple: 
+
+```
+\newfontfamily\Smielyfnt{Humeur}
+\newcommand{\smiley}[1]{{\Smielyfnt #1}}
+```
+
+Ceci permettra d'utiliser la police `Humeur` dans la commande `smiley`.
+
+**nb**: l'appel à une famille de caractères (dans la définition de notre nouvelle commande) se fait au moyen d'une "commande à bascule".
 
 
 ## Quelques *packages* 
