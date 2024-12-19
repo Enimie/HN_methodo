@@ -247,6 +247,7 @@ Compteurs possibles: `a` (lettres de l'alphabet), `A` (lettres en majuscules), `
 |`\newpage` ou `\pagebreak`|Commencer une nouvelle page|
 |`\noindent`|Pas d'indentation au début du paragraphe|
 |`\par`|Nouveau paragraphe (à utiliser dans la définition de commandes ou d'environnements)|
+|`\smallskip`, `\medskip`, `\bigskip`|Insère un espace vertical petit, moyen ou grand|
 
 **nb**: 
 
@@ -769,6 +770,20 @@ Texte de gauche
 
 # Naviguer dans un long document
 
+## Indiquer des changements de langue avec polyglossia
+
+- déclarer dans le préambule, après l'appel du package et `\setmainlanguage`, les autres langues utilisées: `\setotherlanguage{nom de la langue}`
+- dans le corps du texte, indiquer le changement de langue 
+	+ par la commande `\textnomdelalangue{texte}`, par exemple `\textenglish{this is...}` 
+	+ par l'environnement `\begin{nom de la langue} texte \end{nom de la langue}`.  
+	
+	Exemple:
+```
+\begin{english}
+It is a truth universally acknowledged, that a single man in possession of a good fortune must be in want of a wife.
+\end{english}
+```
+
 ## Les renvois internes
 
 - Package `hyperref` (rappel: à charger après tous les packages, sauf exception, comme par exemple le package `glossaries`)
@@ -831,7 +846,7 @@ Texte de gauche
 %(exception à la règle)
 \makeglossaries
 ```
-- Définir les entrées de glossaire dans le préambule ou dans un fichier à part, avec la commande `\newglossaryentry{#1}{#2}` où `#1` = la clef de l'entrée, et  `#2` contient le mot et sa définition.  Exemples:
+- Définir les entrées de glossaire dans le préambule ou dans un fichier à part, avec la commande `\newglossaryentry{#1}{#2}` où `#1` = la clef de l'entrée, et  `#2` contient le mot et sa définition.  Exemples:
 
 ```latex
 \newglossaryentry{ex}{%
