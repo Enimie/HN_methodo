@@ -1,5 +1,6 @@
 %Document vide aux normes de l'École nationale des Chartes
-%Dernières modifications E. Rouquette (12/2023)
+%crée par J.B. Camps
+%Dernières modifications E. Rouquette (12/2024)
 
 %%%%%%%%%%%%%%%%%%%%%% PRÉAMBULE
 
@@ -9,7 +10,9 @@
 \usepackage{fontspec}
 \usepackage{xunicode}
 \usepackage[french]{babel}%on peut préciser d'autres langues.
-
+%\usepackage{polyglossia}
+%\setmainlanguage{french}%indiquer la langue principale du document
+%\setotherlanguage{} %indiquer les autres langues utilisé
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PACKAGES UTILISÉS
 
@@ -60,10 +63,29 @@
 \pagestyle{fancy} %utiliser ses propres choix de mise en page et non ceux par défaut du package
 
 \setlength\headheight{16pt}%la hauteur des headers
+
+%%la façon dont les sections apparaissent dans les en-tête:
+
 \renewcommand{\sectionmark}[1]{\markright{\small\textit{\thesection~\  #1}}}%Faire apparaître dans les headers les sections en  petit et en italiques
-\renewcommand{\sectionmark}[1]{}%Commenter la lign précédetne et mettre celle-ci pour ne pas avoir le titre des sections dans le header
-\renewcommand{\chaptermark}[1]{\markboth{\small\chaptername~\thechapter~--\ \textit{#1}}{}}%idem pour les chapitres
+%\renewcommand{\sectionmark}[1]{}%Commenter la lign précédetne et mettre celle-ci pour ne pas avoir le titre des sections dans le header
+
+%% réglages propres à frontmatter
+\appto\frontmatter{\pagestyle{fancy}%
+	\renewcommand{\chaptermark}[1]{\markboth{\small\textit{#1}}{}}% ne pas faire apparaître de <<numéro>> de chapitre dans les chapitres non numérotés (front: l'introduction, els remerciement, etc)
+}
+
+%% réglages propres à mainmatter
+\appto\mainmatter{
+\renewcommand{\chaptermark}[1]{\markboth{\small\chaptername~\thechapter~--\ \textit{#1}}{}}%faire apparaître dans les headers les sections en  petit et en italiques
 %\renewcommand{\chaptermark}[1]{}%Commenter la ligne précédente et mettre celle-ci pour ne pas avoir le titre des chapitres  dans le header
+}
+
+%% réglages propres aux annexes
+\appto\appendix{
+	\renewcommand{\chaptermark}[1]{\markboth{\small~Annexe \thechapter~--\ \textit{#1}}{}}%faire apparaître dans les headers le nom des annexes
+	%\renewcommand{\chaptermark}[1]{}%Commenter la ligne précédente et mettre celle-ci pour ne pas avoir le titre des chapitres  dans le header
+}
+
 
 
 
@@ -176,7 +198,7 @@
 				pour le diplôme de master \\
 				\enquote{Humanités Numériques} \\
 				\bigskip
-				2024
+				2025
 			\end{large}
 			
 		\end{center}
@@ -207,7 +229,9 @@
 
 	
 \chapter{Introduction}	
-Mon introduction
+Mon introduction 
+%si l'introduction est longue, elle peut être importée avec input
+
 \newpage{\pagestyle{empty}\cleardoublepage}
 
 %%%%%%%%%%%%%%%%%Le corps du mémoire
@@ -218,8 +242,8 @@ Mon introduction
 
 	\part{Une partie}
 \chapter{Mon premier chapitre}
-\input{exemple_section1.tex} %Input: importer un fichier
-%\input{ma_section2}
+%\input{exemple_section1.tex} %Input: importer un fichier
+
 
 %etc
 %Ou bien: ne pas mettre chapter, et importer le chapitre complet:
